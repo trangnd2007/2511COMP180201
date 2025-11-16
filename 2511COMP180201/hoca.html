@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hồ cá vui nhộn</title>
+  <link rel="stylesheet" href="mystyle.css" />
+</head>
+<body>
+  <header class="controls">
+    <button id="bgBtn" type="button">🎨 Đổi cảnh nền</button>
+    <button id="musicBtn" type="button">▶️ Phát nhạc</button>
+    <label for="speedRange">🐢 Tốc độ:</label>
+    <input id="speedRange" type="range" min="0.5" max="2" step="0.1" value="1" />
+  </header>
+
+  <main id="stage" aria-label="Hồ cá">
+    <div id="sea"></div>
+    <div id="waterLight"></div>
+    <div id="seabed"></div>
+
+    <!-- Nhân vật chính -->
+    <div id="characters">
+      <div id="shark" class="swim"><img src="images/shark.png" /></div>
+      <div id="turtle" class="swim"><img src="images/turtle.png" /></div>
+      <div id="diverdivertholan" class="swim diver"><img src="images/tholan.png" /></div>
+      <div id="faintschool" class="school"><img src="images/faintschool.png" /></div>
+    </div>
+
+    <!-- San hô -->
+    <div class="coral" style="left: 15%; bottom: 20px;"><img src="images/coral1.png"></div>
+    <div class="coral" style="left: 60%; bottom: 25px;"><img src="images/coral2.png"></div>
+
+    <!-- Đàn cá nhỏ -->
+    <div id="smallFishGroup"><img src="images/smallFishGroup.gif"></div>
+
+    <!-- Bong bóng -->
+    <div id="bubbles"></div>
+  </main>
+
+  <audio id="bgAudio" src="audio/anh-la-thang-toi.mp3"></audio>
+  <script src="script.js"></script>
+</body>
+</html>

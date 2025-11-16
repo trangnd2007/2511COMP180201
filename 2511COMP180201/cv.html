@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CV - Nguyễn Đoan Trang</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome (icon) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    :root{
+      --left-bg: #1f2a37;       /* nền cột trái */
+      --accent: #2d9cdb;        /* màu nổi bật */
+      --text-dark: #222;
+      --muted: #666;
+      --card-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: #f3f5f7;
+      color:var(--text-dark);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:24px;
+    }
+
+    .cv-wrap{
+      max-width: 980px;
+      margin: 20px auto;
+      display: flex;
+      gap: 0;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+    }
+
+    /* LEFT 40% */
+    .left {
+      flex: 0 0 40%;
+      background: var(--left-bg);
+      color: #fff;
+      padding: 34px;
+      min-width: 260px;
+    }
+
+    .left .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 16px;
+      border: 4px solid rgba(255,255,255,0.08);
+    }
+    .left .avatar img{
+      width:100%; height:100%; object-fit:cover; display:block;
+    }
+
+    .name {
+      font-family: "Montserrat", "Poppins", sans-serif;
+      font-size: 20px;
+      font-weight:700;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+    .job {
+      color: #cfe8ff;
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+    .divider{
+      height:1px;
+      background: rgba(255,255,255,0.08);
+      margin: 18px 0;
+    }
+
+    .section-title {
+      font-weight: 600;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      margin-bottom: 10px;
+      color: rgba(255,255,255,0.92);
+    }
+    .contact-item{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      margin-bottom:10px;
+      font-size:14px;
+      color: rgba(255,255,255,0.95);
+    }
+    .contact-item i{width:20px; text-align:center; margin-top:2px; color: #cdeeff}
+
+    .skills .skill {
+      margin-bottom: 12px;
+    }
+    .skill .label{
+      display:flex; justify-content:space-between; font-size:13px; color: #dbeeff; margin-bottom:6px;
+    }
+    .skill .bar {
+      height:8px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 6px;
+      overflow:hidden;
+    }
+    .skill .bar > span{
+      display:block;
+      height:100%;
+width:60%; /* chỉnh phần trăm ở đây */
+      background: linear-gradient(90deg,var(--accent), #1fb6ff);
+    }
+
+    .hobby-list{
+      display:flex; flex-wrap:wrap; gap:8px;
+    }
+    .hobby{
+      background: rgba(255,255,255,0.08);
+      padding:6px 10px;
+      border-radius: 999px;
+      font-size:13px;
+    }
+
+    /* RIGHT 60% */
+    .right{
+      flex:1;
+      padding: 34px;
+      background: #fff;
+    }
+    .right .header{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:16px;
+      margin-bottom:18px;
+      border-bottom:1px solid #eee;
+      padding-bottom:12px;
+    }
+    .right h1{
+      margin:0;
+      font-family: "Montserrat",sans-serif;
+      font-size:22px;
+      letter-spacing:1px;
+    }
+    .right .headline{
+      color:var(--muted);
+      font-size:14px;
+      margin-top:6px;
+    }
+
+    .section{
+      margin-top:18px;
+    }
+    .section .title{
+      font-weight:600;
+      margin-bottom:10px;
+      color: var(--text-dark);
+    }
+    .education-item, .exp-item, .cert-item{
+      margin-bottom:12px;
+      padding-left:6px;
+      border-left:3px solid rgba(45,156,219,0.12);
+    }
+    .edu-year, .exp-year { font-weight:600; color:var(--accent); font-size:13px; margin-bottom:6px; }
+    .small { color:var(--muted); font-size:14px; line-height:1.5; }
+
+    /* Reference persons (in left or right if wanted) */
+    .refs .ref{
+      margin-bottom:12px;
+      font-size:14px;
+      color:var(--muted);
+    }
+
+    /* responsive: stack vertically on small screens */
+    @media (max-width:880px){
+      .cv-wrap{ flex-direction:column; }
+      .left{ flex: none; width:100%; }
+      .right{ width:100%; }
+      .left .avatar{ margin: 0 auto 12px; }
+      .name{ text-align:center; }
+      .job{ text-align:center; }
+      .left .contact-item{ justify-content:center; }
+      .left .contact-item i{ margin-top:0 }
+    }
+
+    /* small print-friendly tweaks */
+    @media print{
+      body{ background: white; padding:0; }
+      .cv-wrap{ box-shadow:none; border-radius:0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cv-wrap" role="document" aria-label="Curriculum Vitae">
+    <!-- LEFT (40%) -->
+    <aside class="left" role="complementary">
+      <div class="avatar" aria-hidden="true">
+        <!-- Thay đường dẫn ảnh bên dưới -->
+        <img src="https://khoinguonsangtao.vn/wp-content/uploads/2022/07/avatar-anime-1.jpg" alt="Ảnh đại diện">
+      </div>
+
+      <div class="name">Nguyễn Đoan Trang</div>
+      <div class="job">Sinh viên</div>
+
+      <div class="divider" aria-hidden="true"></div>
+
+      <div class="section contact">
+        <div class="section-title">Contact</div>
+        <div class="contact-item"><i class="fa fa-map-marker-alt"></i><div>KhanhHoa, Vietnam</div></div>
+        <div class="contact-item"><i class="fa fa-phone"></i><div>+84 388 844 572</div></div>
+        <div class="contact-item"><i class="fa fa-envelope"></i><div>5101104101@student.hcmue.edu.vn</div></div>
+<div class="contact-item"><i class="fa fa-link"></i><div>github.com/trangnd2007</div></div>
+      </div>
+
+      <div style="height:12px"></div>
+
+      <div class="section skills" aria-label="Kỹ năng">
+        <div class="section-title">Kỹ năng</div>
+
+        <div class="skill">
+          <div class="label"><span>Chăm chỉ</span><span>70%</span></div>
+          <div class="bar"><span style="width:70%"></span></div>
+        </div>
+
+        <div class="skill">
+          <div class="label"><span>Học thức</span><span>60%</span></div>
+          <div class="bar"><span style="width:60%"></span></div>
+        </div>
+
+        <div class="skill">
+          <div class="label"><span>TeamWork</span><span>60%</span></div>
+          <div class="bar"><span style="width:60%"></span></div>
+        </div>
+      </div>
+
+      <div style="height:12px"></div>
+
+      <div class="section hobbies" aria-label="Sở thích">
+        <div class="section-title">Sở thích</div>
+        <div class="hobby-list">
+          <div class="hobby">Listen to Music</div>
+          <div class="hobby">Travel</div>
+          <div class="hobby">Play Games</div>
+        </div>
+      </div>
+
+      <div style="height:14px"></div>
+
+      <div class="section refs" aria-label="Người tham chiếu">
+        <div class="section-title">Người tham chiếu</div>
+        <div class="ref"><strong>Mr. Hien Luong</strong><br>Company Name — +84 xxx xxx xxx</div>
+        <div class="ref"><strong>Ms. Kiet Luong</strong><br>Company Name — +84 xxx xxx xxx</div>
+      </div>
+    </aside>
+
+    <!-- RIGHT (60%) -->
+    <main class="right" role="main">
+      <div class="header">
+        <div>
+          <h1>Nguyễn Đoan Trang</h1>
+          <div class="headline">Frontend Developer — UI/UX enthusiast</div>
+        </div>
+        <div style="text-align:right">
+          <!-- thêm thông tin nhỏ ở góc phải (tuỳ chọn) -->
+          <div style="font-size:13px; color:var(--muted)">Age: 18</div>
+          <div style="font-size:13px; color:var(--muted)">Location: KhanhHoa</div>
+        </div>
+      </div>
+
+      <section class="section about" aria-label="Giới thiệu">
+        <div class="title">About me</div>
+        <div class="small">
+          Tôi là một Frontend Developer với hơn 1 năm kinh nghiệm xây dựng giao diện web responsive,
+          tối ưu hoá trải nghiệm người dùng. Tôi quan tâm đến UI/UX, performance và code sạch.
+        </div>
+      </section>
+
+      <section class="section education" aria-label="Học vấn">
+        <div class="title">Education</div>
+
+        <div class="education-item">
+          <div class="edu-year">2025</div>
+          <div style="font-weight:600">Trường Đại học Sư Phạm Thành phố Hồ Chí Minh</div>
+          <div class="small">Công nghệ thông tin</div>
+        </div>
+      </section>
+
+      <section class="section experience" aria-label="Kinh nghiệm">
+<div class="title">Experience</div>
+
+        <div class="exp-item">
+          <div class="exp-year">2025 — Present</div>
+          <div style="font-weight:600">Senior Frontend Developer — Công ty Gia Đình</div>
+          <div class="small">Phát triển SPA bằng React, tối ưu hoá hiệu năng, dẫn dắt team 3 lập trình viên.</div>
+        </div>
+
+      </section>
+
+      <section class="section certificates" aria-label="Chứng chỉ">
+        <div class="title">Certificates</div>
+        <div class="cert-item">
+          <div style="font-weight:600">No Certificates Yet</div>
+        </div>
+      </section>
+
+      <section class="section more" aria-label="Thêm">
+        <div class="title">Additional</div>
+        <div class="small">
+          Ngôn ngữ: Tiếng Việt (B2), Tiếng Anh (Intermediate). Sẵn sàng làm việc remote hoặc onsite.
+        </div>
+      </section>
+    </main>
+  </div>
+
+</body>
+</html>

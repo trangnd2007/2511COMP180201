@@ -1,0 +1,158 @@
+:root {
+  --sea-color: #87ceeb;
+  --seabed-color: #f0e68c;
+  --anim-speed-mult: 1;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(var(--sea-color), var(--seabed-color));
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.controls {
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background: rgba(255,255,255,0.9);
+  border-bottom: 1px solid #ddd;
+  flex-wrap: wrap;
+  justify-content: center;
+  z-index: 10;
+}
+
+#stage {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* biển */
+#sea {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(var(--sea-color), #0b4f6c 70%);
+  z-index: 0;
+}
+
+/* ánh sáng dưới nước */
+#waterLight {
+  position: absolute;
+  inset: 0;
+  background: url('images/waterlight.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.18;
+  mix-blend-mode: screen;
+  animation: waveLight 9s linear infinite;
+  z-index: 1;
+  pointer-events: none;
+}
+@keyframes waveLight {
+  0% { transform: scale(1) translateY(0); }
+  100% { transform: scale(1.1) translateY(-30px); }
+}
+
+#seabed {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 130px;
+  background: linear-gradient(var(--seabed-color), #8b5a2b);
+  box-shadow: inset 0 10px 30px rgba(0,0,0,0.15);
+  z-index: 2;
+}
+
+.swim {
+  position: absolute;
+  z-index: 4;
+  transform-origin: center;
+}
+.school {
+  position: absolute;
+  z-index: 4;
+  transform-origin: center;
+}
+.swim img, .school img, .coral img {
+  width: 100%;
+  display: block;
+  animation: waveSwim calc(3s / var(--anim-speed-mult)) ease-in-out infinite;
+}
+@keyframes waveSwim {
+  0%,100% { transform: translateY(0) }
+  50%     { transform: translateY(-8px) }
+}
+
+/* vị trí nhân vật */
+#shark {
+  left: -300px; top: 180px; width: 280px;
+  animation: sharkMove calc(14s / var(--anim-speed-mult)) linear infinite;
+}
+#turtle {
+  left: -200px; top: 330px; width: 130px;
+  animation: turtleMove calc(22s / var(--anim-speed-mult)) linear infinite;
+}
+
+#faintschool { width: 80px; left: 150px; top: 460px;}
+
+/* cá quay đầu */
+@keyframes sharkMove {
+  0%   { left: -300px; transform: scaleX(1); }
+  45%  { left: 100vw; transform: scaleX(1) translateY(-20px); }
+  50%  { transform: scaleX(-1); }
+  95%  { left: -300px; transform: scaleX(-1) translateY(15px); }
+  100% { transform: scaleX(1); }
+}
+
+@keyframes turtleMove {
+  0%   { left: -200px; transform: scaleX(1); }
+  50%  { left: 90vw;  transform: scaleX(1) translateY(10px); }
+  51%  { transform: scaleX(-1); }
+  100% { left: -200px; transform: scaleX(-1); }
+}
+
+/* san hô */
+.coral {
+  position: absolute;
+  width: 130px;
+  z-index: 3;
+}
+.coral img {
+  animation: sway 5s ease-in-out infinite alternate;
+}
+@keyframes sway {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(5deg); }
+}
+
+/* đàn cá nhỏ */
+.smallfish {
+  position: absolute;
+  width: 40px;
+  animation: smallFishSwim linear infinite;
+  z-index: 4;
+}
+@keyframes smallFishSwim {
+  0%   { left: -60px; top: 40vh; transform: scaleX(1); }
+  50%  { left: 100vw; top: 35vh; transform: scaleX(1); }
+  51%  { transform: scaleX(-1); }
+  100% { left: -60px; top: 45vh; transform: scaleX(-1); }
+}
+
+/* bong bóng */
+#bubbles { position: absolute; inset: 0; pointer-events:none; z-index: 5; }
+.bubble {
+  position: absolute;
+  bottom: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(173,216,230,0.4));
+  animation: bubbleUp 6s linear infinite;
+}
+@keyframes bubbleUp {
+  0%   { transform: translateY(0); opacity: 0.9; }
+  100% { transform: translateY(-900px); opacity: 0; }
+}
